@@ -1,0 +1,73 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+ul,ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	border: 1px solid blue;
+	width: 1244px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+ul li{
+	width: 236px;
+	/*height: 100px;*/
+	overflow: hidden;
+	/*background: orange;*/
+}
+.box .img img{
+	width: 100%;
+}
+ul li .box{
+	border: 1px solid blue;
+}
+.title{
+	margin: 10px 0;
+	padding: 0 16px;
+
+}
+.info{
+	margin: 10px 0;
+	padding: 0 15px;
+	line-height: 16px;
+	vertical-align: top;
+}
+.info .repin,.info .like{
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	margin-right: 4px;
+	vertical-align: top;
+}
+.info .repin{
+	background: url(./img/svg.svg) no-repeat -30px 0px;
+}
+.info .like{
+	background: url(./img/svg.svg) no-repeat 0 0px;
+}
+.user {
+	padding: 0 15px;
+	border-top: 1px solid #ccc;
+}
+.user a{
+	float: left;
+}
+.user a img{
+	width: 34px;
+	height: 34px;
+}
+.user .inner{
+	overflow: hidden;
+	padding:15px 15px 0 10px;
+}
+.user .inner .line{
+	line-height: 1.5;
+	width: 100%;
+}
