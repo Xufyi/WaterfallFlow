@@ -55,10 +55,9 @@
 		})
 		//r为json值，
 		function sendAjax(r){
-			$.get("data/"+ r +".json",function(data){
+			$.get("./data/"+ r +".json",function(data){
 			//判断当页面
 			var data_arr = data.pins
-			console.log(data_arr)
 			var str = ''
 			//li内容上树
 			for(var i = 0;i<data_arr.length;i++){
