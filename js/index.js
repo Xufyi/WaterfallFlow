@@ -3,33 +3,32 @@ var tpl_str = tpl.html()
 var lis = $('#list>li')
 var height_arr = new Array(lis.length).fill(0)
 
-$('.repin').css({
-	'width':'500'
-})
-//r为json值，
+// $('.repin').css({
+// 	'width':'500'
+// })
+
+//发送ajax请求，
 function sendAjax(r){
 	// $.get("https://xufyi.github.io/WaterfallFlow/data/"+ r +".json",function(data){
 	$.get("./data/"+ r +".json",function(data){
-			console.log(data)
+	console.log(data)
 	//判断当页面
 	var data_arr = data.pins
 	var str = ''
 	//li内容上树
 	for(var i = 0;i<data_arr.length;i++){
 		str = format(tpl_str,data_arr[i])
-		
 		//获取到当前img的高度，并计算出当前li高度
-//因为li中的img先是用str上树，上树后再去发送Img请求，所以只能通过json对象中知道img的高度来计算，
-// 无法使用onload
+//注意：
+	// li中的img先是用str上树，上树后再去发送Img请求，所以只能通过json对象中知道img的高度来计算，不要使用onload
+		//获取图片高度，计算li高度
 		var height  = data_arr[i].file.height
 		var width  = data_arr[i].file.width
-
 		var img_height = 234 * height / width 
 		var li_height = img_height + 123
-
+		//计算出最小高度的li
 		var idx = getMinIdx(height_arr)
-		
-		//判断height_arr最小值，上树，上树后height_arr中对应项的数据变化
+		//判断height_arr最小值，上树，上树后height_arr中对应li那项的数据变化
 		$('#list>li').eq(idx).append(str)
 		height_arr[idx] += li_height
 	}	
@@ -37,8 +36,7 @@ function sendAjax(r){
 }
 var r = 1
 sendAjax(r)
-
-//判断页面滚动值，当内容小于200px时候再去发送ajax
+//当页面高度内容小于200px，发送ajax
 document.body.onscroll = function(){
 	//页面高，
 	var pageHeight = document.body.clientHeight
@@ -46,18 +44,16 @@ document.body.onscroll = function(){
 	var scrollHeight = document.documentElement.scrollTop 
 	//视口高
 	var clientHeight = document.documentElement.clientHeight
-
-	//节流
+	//防抖
 	clearTimeout(timer)
 	if(pageHeight - scrollHeight - clientHeight <200){
 		var timer = setTimeout(function(){
-		console.log('1')
 		r++
 		sendAjax(r)
 		})
 	}	
 }
-  // 定义一个函数 该函数接收两个参数 第一个是模板字符串 第二个是对象
+// 定义一个函数 该函数接收两个参数 第一个是模板字符串 第二个是对象
 function format(tplStr, dictionary) {
 	// 替换方法 将字符串中某些内容替换掉 
 	return tplStr.replace(/<%((\w+)(\.\w+)*)%>/g, function(match, $1) {
@@ -71,7 +67,6 @@ function format(tplStr, dictionary) {
 		return result[arr[i]];
 	})
 }
-
 //返回数组中最小项索引值
 function getMinIdx(arr){
 	//假设第一项为最小项
