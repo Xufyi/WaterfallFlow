@@ -6,6 +6,6 @@ https://xufyi.github.io/WaterfallFlow/
 
 效果预览：  
 <div align=center>
-   <img src="https://github.com/Xufyi/WaterfallFlow/blob/master/WaterfallFlow.gif" width="928" height="560">  
+   <img src="https://github.com/Xufyi/WaterfallFlow/blob/master/WaterfallFlow.gif" width="735" height="424">  
 </div>
 未完待续
